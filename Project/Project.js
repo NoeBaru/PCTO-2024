@@ -20,6 +20,8 @@ let mn_speed;
 let mn_x;
 let mn_y;
 
+let mn_modifier;
+
 /*Background*/
 let bg_img_game;
 let bg_img_act;
@@ -46,21 +48,20 @@ function setup(){
     createCanvas(windowWidth, windowHeight);
     frameRate(60);
 
-    mn_speed = 10;
+    mn_speed = 7;
+    mn_modifier = 7;
     mn_img.resize(windowWidth / 40, windowWidth / 40);
-    mn_x = (windowWidth / 2) - (mn_img.width / 2);
-    mn_y = (windowHeight / 2) - (mn_img.height / 2);
     
 
-    monster = new Monster(mn_y, mn_x, mn_speed, mn_img);
+    monster = new Monster(mn_speed, mn_img, mn_modifier);
 
     bg_img_act = bg_img_game;
 
 }
 
 function isInScreen(x, y) {
-    return x > 0 && x < width - monster.img.width &&
-        y > 0 && y < height;
+    return x > - monster.img.width && x < width &&
+        y > - monster.img.height && y < height;
 }
 
 function wait(time){
@@ -68,7 +69,6 @@ function wait(time){
     start = millis();
     do
     {
-        background(51);
         current = millis();
     }
     while(current < start + time)
