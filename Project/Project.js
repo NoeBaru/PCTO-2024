@@ -59,6 +59,20 @@ function setup(){
 
 }
 
+function blackMask(){
+
+    push();
+
+    console.log("in blackMask");
+
+    imageMode(CENTER);
+    if(mouseX)
+    image(bg_img_off, mouseX, mouseY, 2 * windowWidth, 2 * windowHeight);
+
+    pop();
+
+}
+
 function isInScreen(x, y) {
     return x > - monster.img.width && x < width &&
         y > - monster.img.height && y < height;
@@ -77,12 +91,14 @@ function wait(time){
 function draw(){
 
     background(bg_img_act);
-    monster.update(); 
-    if (!isInScreen(monster.x, monster.y) && alive == true){        
-        wait(random(100, 2000));
-        alive = false;
-    }  
-    if (alive == false){
+    if (alive == true){
+        monster.update(); 
+        if (!isInScreen(monster.x, monster.y) && alive == true){        
+            wait(random(100, 2000));
+            alive = false;
+        } 
+        blackMask();
+    }else{
         background(monster.img)
     }
 
