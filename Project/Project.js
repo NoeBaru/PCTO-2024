@@ -48,7 +48,7 @@ function setup(){
     createCanvas(windowWidth, windowHeight);
     frameRate(60);
 
-    mn_speed = 7;
+    mn_speed = 3; /*possibility to speed up the game basing on the level of the user*/
     mn_modifier = 7;
     mn_img.resize(windowWidth / 40, windowWidth / 40);
     
@@ -62,8 +62,6 @@ function setup(){
 function blackMask(){
 
     push();
-
-    console.log("in blackMask");
 
     imageMode(CENTER);
     if(mouseX)
@@ -93,11 +91,11 @@ function draw(){
     background(bg_img_act);
     if (alive == true){
         monster.update(); 
+        blackMask();
         if (!isInScreen(monster.x, monster.y) && alive == true){        
             wait(random(100, 2000));
             alive = false;
         } 
-        blackMask();
     }else{
         background(monster.img)
     }

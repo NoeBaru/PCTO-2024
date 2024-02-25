@@ -17,15 +17,18 @@ class Monster {
         this.y = random(height / 2 - this.img.height, height / 2 + this.img.height);
         this.side_x = random([-1, 1]);
         this.side_y = random([-1, 1]);
+        this.progress = 0;
     }
 
     
 
     move(){ 
         if(isInScreen(this.x, this.y)){
-            this.x += (this.speed / this.modifier) + this.side_x;
-            this.y += (this.speed / this.modifier) + this.side_y;
-            this.img.resize(this.img.width + this.speed/this.modifier, this.img.height + this.speed/this.modifier);
+            this.progress += 1;
+            this.x += (this.speed * (this.progress / 1000)) + this.side_x;
+            this.y += (this.speed * (this.progress / 1000)) + this.side_y;
+            this.img.resize(this.img.width + this.progress % 2, this.img.height + this.progress % 2);
+            console.log("progress:" + this.progress % 2);
         }
     }
 
