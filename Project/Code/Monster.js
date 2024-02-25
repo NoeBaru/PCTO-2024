@@ -9,10 +9,9 @@ Description:
 In this code we create the class Monster that we will use in our code.
 */
 class Monster {
-    constructor(mn_speed, mn_img, mn_modifier){
+    constructor(mn_speed, mn_img){
         this.speed = mn_speed;
         this.img = mn_img;
-        this.modifier = mn_modifier;
         this.x = random(width / 2 - this.img.width, width / 2 + this.img.width);
         this.y = random(height / 2 - this.img.height, height / 2 + this.img.height);
         this.side_x = random([-1, 1]);

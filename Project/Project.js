@@ -49,11 +49,11 @@ function setup(){
     frameRate(60);
 
     mn_speed = 3; /*possibility to speed up the game basing on the level of the user*/
-    mn_modifier = 7;
+
     mn_img.resize(windowWidth / 40, windowWidth / 40);
     
 
-    monster = new Monster(mn_speed, mn_img, mn_modifier);
+    monster = new Monster(mn_speed, mn_img);
 
     bg_img_act = bg_img_game;
 
