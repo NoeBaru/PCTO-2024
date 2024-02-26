@@ -22,14 +22,17 @@ let mn_y;
 
 let mn_modifier;
 
+let alive = true;
+
 /*Background*/
 let bg_img_game;
 let bg_img_act;
-let bg_img_off;
+let bg_img_torch;
 
-let light = true;
+let ellipseX;
+let ellipseY;
 
-let alive = true;
+let d;
 
 
 
@@ -37,7 +40,7 @@ let alive = true;
 function preload(){
 
     bg_img_game = loadImage("./Img/Background.png");
-    bg_img_off = loadImage("./Img/BackgroundOff.png")
+    bg_img_torch = loadImage("./Img/BackgroundOff.png")
 
     mn_img = loadImage("./Img/Monster.png");
 
@@ -50,26 +53,49 @@ function setup(){
 
     mn_speed = 3; /*possibility to speed up the game basing on the level of the user*/
 
-    mn_img.resize(windowWidth / 40, windowWidth / 40);
-    
+    mn_img.resize(windowWidth / 40, windowWidth / 40);   
 
     monster = new Monster(mn_speed, mn_img);
 
+    
     bg_img_act = bg_img_game;
+    bg_img_torch.resize(2 * windowWidth, 2 * windowHeight)
+
 
 }
 
-function blackMask(){
+function torch(){
 
     push();
 
     imageMode(CENTER);
     if(mouseX)
-    image(bg_img_off, mouseX, mouseY, 2 * windowWidth, 2 * windowHeight);
+    image(bg_img_torch, mouseX, mouseY, bg_img_torch.width, bg_img_torch.height);
 
     pop();
 
 }
+
+function isLookingMonster(){
+    ellipseMode(CENTER);
+    fill(255, 0);
+    noStroke();
+    
+    ellipseX = monster.x + monster.img.width / 2;
+    ellipseY = monster.y + monster.img.height / 2;
+
+    ellipse(ellipseX, ellipseY, monster.img.width, monster.img.height);
+
+    d = dist(mouseX, mouseY, ellipseX, ellipseY);
+
+    if (d < monster.img.width / 2){
+        monster.saw = true;
+    }else{
+        monster.saw = false;
+    }
+}
+
+
 
 function isInScreen(x, y) {
     return x > - monster.img.width && x < width &&
@@ -84,6 +110,7 @@ function wait(time){
         current = millis();
     }
     while(current < start + time)
+
 }
 
 function draw(){
@@ -91,7 +118,9 @@ function draw(){
     background(bg_img_act);
     if (alive == true){
         monster.update(); 
-        blackMask();
+        torch();
+        isLookingMonster();
+        console.log(monster.saw)
         if (!isInScreen(monster.x, monster.y) && alive == true){        
             wait(random(100, 2000));
             alive = false;

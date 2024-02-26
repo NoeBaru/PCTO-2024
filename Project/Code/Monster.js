@@ -17,6 +17,7 @@ class Monster {
         this.side_x = random([-1, 1]);
         this.side_y = random([-1, 1]);
         this.progress = 0;
+        this.saw = false;
     }
 
     
@@ -27,7 +28,7 @@ class Monster {
             this.x += (this.speed * (this.progress / 1000)) + this.side_x;
             this.y += (this.speed * (this.progress / 1000)) + this.side_y;
             this.img.resize(this.img.width + this.progress % 2, this.img.height + this.progress % 2);
-            console.log("progress:" + this.progress % 2);
+            //console.log("progress:" + this.progress % 2);
         }
     }
 
@@ -37,7 +38,9 @@ class Monster {
 
     update() {
         
-        this.move();
+        if (!this.saw){
+            this.move();
+        }
         this.show();
 
     }
