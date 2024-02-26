@@ -27,12 +27,15 @@ let alive = true;
 /*Background*/
 let bg_img_game;
 let bg_img_act;
-let bg_img_torch;
+let torch_img;
 
-let bg_img_torch_width_start;
-let bg_img_torch_height_start;
-let bg_img_torch_height_modifier;//it's if the torch get smaller of the start one
-let bg_img_torch_width_modifier;
+let torch_img_width_start;
+let torch_img_height_start;
+let torch_img_width_end;
+let torch_img_height_end;
+let torch_img_height_modifier;//it's if the torch get smaller of the start one
+let torch_img_width_modifier;
+let torch_img_speed;
 
 let ellipseX;
 let ellipseY;
@@ -45,7 +48,7 @@ let d;
 function preload(){
 
     bg_img_game = loadImage("./Img/Background.png");
-    bg_img_torch = loadImage("./Img/BackgroundOff.png")
+    torch_img = loadImage("./Img/BackgroundOff.png")
 
     mn_img = loadImage("./Img/Monster.png");
 
@@ -64,10 +67,15 @@ function setup(){
 
     bg_img_act = bg_img_game;
 
-    bg_img_torch_width_start = 2 * windowWidth;
-    bg_img_torch_height_start = 2 * windowHeight;   
+    torch_img_width_start = 2 * windowWidth;
+    torch_img_height_start = 2 * windowHeight;
     
-    bg_img_torch.resize(bg_img_torch_width_start,  bg_img_torch_height_start)
+    torch_img_width_end = 3 * windowWidth;
+    torch_img_height_end = 3 * windowHeight; 
+
+    torch_img
+    
+    torch_img.resize(torch_img_width_start,  torch_img_height_start)
 
     
 
@@ -77,33 +85,24 @@ function torch(){
 
     push();
 
-    imageMode(CENTER);
-    if(mouseX)
-    image(bg_img_torch, mouseX, mouseY, bg_img_torch.width, bg_img_torch.height);
-
     if(monster.saw){
 
-        bg_img_torch.resize(bg_img_torch.width + 4, bg_img_torch.height + 4)
+        torch_img_width_modifier = max(torch_img_width_end, (torch_img.width + 4));
+        torch_img_height_modifier = max(torch_img_height_end, (torch_img.height + 4));
+
 
     }else{
 
-        if(bg_img_torch.width > bg_img_torch_width_start){
-            bg_img_torch_width_modifier = bg_img_torch.width - 10;
-        }else{
-            bg_img_torch_width_modifier = bg_img_torch_width_start;
-        }
-
-        if(bg_img_torch.height > bg_img_torch_height_start){
-            bg_img_torch_height_modifier = bg_img_torch.height - 10;
-        }else{
-            bg_img_torch_height_modifier = bg_img_torch_height_start;
-        }
-
-        bg_img_torch.resize(bg_img_torch_width_modifier, bg_img_torch_height_modifier)
-
-
+        torch_img_width_modifier = min(torch_img_width_start, (torch_img.width - 40));
+        torch_img_height_modifier = min(torch_img_height_start, (torch_img.height - 40));
 
     }
+
+    imageMode(CENTER);
+
+    //image(torch_img, mouseX, mouseY, torch_img_width_modifier, torch_img_height_modifier);
+    torch_img.resize(torch_img_width_modifier, torch_img_height_modifier);
+    image(torch_img, mouseX, mouseY, torch_img.width, torch_img.height);
 
     pop();
 
