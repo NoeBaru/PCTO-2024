@@ -29,6 +29,11 @@ let bg_img_game;
 let bg_img_act;
 let bg_img_torch;
 
+let bg_img_torch_width_start;
+let bg_img_torch_height_start;
+let bg_img_torch_height_modifier;//it's if the torch get smaller of the start one
+let bg_img_torch_width_modifier;
+
 let ellipseX;
 let ellipseY;
 
@@ -51,16 +56,20 @@ function setup(){
     createCanvas(windowWidth, windowHeight);
     frameRate(60);
 
-    mn_speed = 3; /*possibility to speed up the game basing on the level of the user*/
+    mn_speed = 0; /*possibility to speed up the game basing on the level of the user*/
 
     mn_img.resize(windowWidth / 40, windowWidth / 40);   
 
     monster = new Monster(mn_speed, mn_img);
 
-    
     bg_img_act = bg_img_game;
-    bg_img_torch.resize(2 * windowWidth, 2 * windowHeight)
 
+    bg_img_torch_width_start = 2 * windowWidth;
+    bg_img_torch_height_start = 2 * windowHeight;   
+    
+    bg_img_torch.resize(bg_img_torch_width_start,  bg_img_torch_height_start)
+
+    
 
 }
 
@@ -71,6 +80,30 @@ function torch(){
     imageMode(CENTER);
     if(mouseX)
     image(bg_img_torch, mouseX, mouseY, bg_img_torch.width, bg_img_torch.height);
+
+    if(monster.saw){
+
+        bg_img_torch.resize(bg_img_torch.width + 4, bg_img_torch.height + 4)
+
+    }else{
+
+        if(bg_img_torch.width > bg_img_torch_width_start){
+            bg_img_torch_width_modifier = bg_img_torch.width - 10;
+        }else{
+            bg_img_torch_width_modifier = bg_img_torch_width_start;
+        }
+
+        if(bg_img_torch.height > bg_img_torch_height_start){
+            bg_img_torch_height_modifier = bg_img_torch.height - 10;
+        }else{
+            bg_img_torch_height_modifier = bg_img_torch_height_start;
+        }
+
+        bg_img_torch.resize(bg_img_torch_width_modifier, bg_img_torch_height_modifier)
+
+
+
+    }
 
     pop();
 
