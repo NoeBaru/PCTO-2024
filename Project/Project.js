@@ -28,6 +28,7 @@ let alive = true;
 let bg_img_game;
 let bg_img_act;
 let torch_img;
+let torch_
 
 let torch_img_width_start;
 let torch_img_height_start;
@@ -66,6 +67,7 @@ function setup(){
     mn_speed = score; /*possibility to speed up the game basing on the level of the user*/
 
     mn_img.resize(windowWidth / 40, windowWidth / 40);   
+    
 
     monster = new Monster(mn_speed, mn_img);
 
@@ -191,6 +193,7 @@ function draw(){
         } 
     }else{
         background(monster.img)
+
         printScore();
     }
 
