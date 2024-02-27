@@ -18,6 +18,9 @@ class Monster {
         this.side_y = random([-1, 1]);
         this.progress = 0;
         this.saw = false;
+        this.kill = false;
+        this.lp = 0;
+        this.maxHp = 50
     }
 
     
@@ -36,12 +39,24 @@ class Monster {
         image(this.img, this.x, this.y);
     }
 
-    update() {
-        
-        if (!this.saw){
-            this.move();
+    isKilled(){
+        if (this.lp >= this.maxHp){
+            this.kill = true;
         }
-        this.show();
+    }
+
+    update(){
+        
+        if (!monster.kill){
+            if (!this.saw){
+                this.move();
+            }
+            this.isKilled()
+            this.show();
+        }else{
+            killMonster()
+        }
+        
 
     }
     

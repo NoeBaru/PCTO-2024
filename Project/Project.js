@@ -43,6 +43,10 @@ let ellipseY;
 let d;
 
 
+let score_incresing = 3;
+let score = score_incresing;
+
+
 
 
 function preload(){
@@ -59,7 +63,7 @@ function setup(){
     createCanvas(windowWidth, windowHeight);
     frameRate(60);
 
-    mn_speed = 0; /*possibility to speed up the game basing on the level of the user*/
+    mn_speed = score; /*possibility to speed up the game basing on the level of the user*/
 
     mn_img.resize(windowWidth / 40, windowWidth / 40);   
 
@@ -81,29 +85,27 @@ function setup(){
 
 }
 
+
 function torch(){
 
     push();
 
     if(monster.saw){
 
-        torch_img_width_modifier = max(torch_img_width_end, (torch_img.width + 4));
-        torch_img_height_modifier = max(torch_img_height_end, (torch_img.height + 4));
+        torch_img_width_modifier = torch_img_width_end + (monster.img.width * 8);
+        torch_img_height_modifier = torch_img_height_end + (monster.img.height * 8);
 
 
     }else{
 
-        torch_img_width_modifier = min(torch_img_width_start, (torch_img.width - 40));
-        torch_img_height_modifier = min(torch_img_height_start, (torch_img.height - 40));
+        torch_img_width_modifier = torch_img_width_start;
+        torch_img_height_modifier = torch_img_height_start;
 
     }
 
-    imageMode(CENTER);
-
-    //image(torch_img, mouseX, mouseY, torch_img_width_modifier, torch_img_height_modifier);
-    torch_img.resize(torch_img_width_modifier, torch_img_height_modifier);
-    image(torch_img, mouseX, mouseY, torch_img.width, torch_img.height);
-
+    imageMode(CENTER); 
+    image(torch_img, mouseX, mouseY, torch_img_width_modifier, torch_img_height_modifier);
+    
     pop();
 
 }
@@ -125,9 +127,17 @@ function isLookingMonster(){
     }else{
         monster.saw = false;
     }
+
 }
 
+function isKillingMonster(){
 
+    if (monster.saw){
+
+        monster.lp += 1;
+       
+    }
+}
 
 function isInScreen(x, y) {
     return x > - monster.img.width && x < width &&
@@ -145,6 +155,28 @@ function wait(time){
 
 }
 
+function killMonster(){
+
+    monster.x = -monster.width;
+    monster.y = -monster.height;
+
+    score += score_incresing;
+
+    
+
+    setup();
+    draw();
+
+
+}
+
+function printScore(){
+    textSize(32);
+    textAlign(CENTER, CENTER);
+    fill(0);
+    text("Score: " + ((score / score_incresing) - 1), width / 2, height / 2);
+}
+
 function draw(){
 
     background(bg_img_act);
@@ -152,13 +184,14 @@ function draw(){
         monster.update(); 
         torch();
         isLookingMonster();
-        console.log(monster.saw)
-        if (!isInScreen(monster.x, monster.y) && alive == true){        
+        isKillingMonster();
+        if (!isInScreen(monster.x, monster.y) && alive == true && !monster.kill){        
             wait(random(100, 2000));
             alive = false;
         } 
     }else{
         background(monster.img)
+        printScore();
     }
 
 }
