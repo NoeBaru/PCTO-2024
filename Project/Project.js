@@ -28,7 +28,7 @@ let alive = true;
 let bg_img_game;
 let bg_img_act;
 let torch_img;
-let torch_
+let torch_img_off;
 
 let torch_img_width_start;
 let torch_img_height_start;
@@ -54,8 +54,11 @@ function preload(){
 
     bg_img_game = loadImage("./Img/Background.png");
     torch_img = loadImage("./Img/BackgroundOff.png")
+    torch_img_off = loadImage("./Img/lightOff.png")
 
     mn_img = loadImage("./Img/Monster.png");
+    mn_img_jmpsc = loadImage ("./img/Monsterjumpscare.png");
+
 
 }
 
@@ -69,7 +72,7 @@ function setup(){
     mn_img.resize(windowWidth / 40, windowWidth / 40);   
     
 
-    monster = new Monster(mn_speed, mn_img);
+    monster = new Monster(mn_speed, mn_img, mn_img_jmpsc);
 
     bg_img_act = bg_img_game;
 
@@ -78,8 +81,6 @@ function setup(){
     
     torch_img_width_end = 3 * windowWidth;
     torch_img_height_end = 3 * windowHeight; 
-
-    torch_img
     
     torch_img.resize(torch_img_width_start,  torch_img_height_start)
 
@@ -192,7 +193,11 @@ function draw(){
             alive = false;
         } 
     }else{
-        background(monster.img)
+        background(torch_img_off)
+        wait(random(500, 1000))
+        monster.img_jmpsc.width = windowWidth;
+        monster.img_jmpsc.height = windowHeight;
+        image(monster.img_jmpsc, 0, 0);
 
         printScore();
     }

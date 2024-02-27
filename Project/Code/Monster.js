@@ -9,7 +9,7 @@ Description:
 In this code we create the class Monster that we will use in our code.
 */
 class Monster {
-  constructor(mn_speed, mn_img){
+  constructor(mn_speed, mn_img, mn_img_jmpsc){
       this.speed = mn_speed;
       this.img = mn_img;
       this.x = random(width / 2 - this.img.width, width / 2 + this.img.width);
@@ -21,6 +21,7 @@ class Monster {
       this.kill = false;
       this.lp = 0;
       this.maxHp = 50
+      this.img_jmpsc = mn_img_jmpsc;
   }
 
   
