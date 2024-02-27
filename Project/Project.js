@@ -49,7 +49,6 @@ let score = score_incresing;
 
 
 
-
 function preload(){
 
     bg_img_game = loadImage("./Img/Background.png");
@@ -189,15 +188,14 @@ function draw(){
         isLookingMonster();
         isKillingMonster();
         if (!isInScreen(monster.x, monster.y) && alive == true && !monster.kill){        
-            wait(random(100, 2000));
             alive = false;
         } 
     }else{
         background(torch_img_off)
-        wait(random(500, 1000))
+        wait(random(500, 1500))
         monster.img_jmpsc.width = windowWidth;
-        monster.img_jmpsc.height = windowHeight;
-        image(monster.img_jmpsc, 0, 0);
+        monster.img_jmpsc.height = 2 * windowHeight;
+        image(monster.img_jmpsc, 0, -windowHeight / 4);
 
         printScore();
     }

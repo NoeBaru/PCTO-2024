@@ -29,10 +29,10 @@ class Monster {
   move(){ 
       if(isInScreen(this.x, this.y)){
           this.progress += 1;
-          this.x += (this.speed * (this.progress / 1000)) + this.side_x;
-          this.y += (this.speed * (this.progress / 1000)) + this.side_y;
-          this.img.width = this.img.width + this.progress % 2;
-          this.img.height = this.img.height + this.progress % 2;
+          this.x += (this.speed * (this.progress / 500)) + this.side_x;
+          this.y += (this.speed * (this.progress / 500)) + this.side_y;
+          this.img.width = this.img.width + this.progress % 3;
+          this.img.height = this.img.height + this.progress % 3;
           //I used the resize, but it made the images transparent and blurry, so I use this method now.
       }
   }
