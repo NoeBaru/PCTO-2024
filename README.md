@@ -4,9 +4,12 @@
 
 Peeky Eyes, is designed for individuals with ALS and total or partial paralysis, who can play using eye tracker technology.
 
-The goal is to search for the monster in a dark room before it approaches and ends the game.
+The goal is to search for the monster, Smiley, in a dark room before it approaches and ends the game.
 
-It advances slowly, and if found, points are earned, the winner is the one who collects the most points. 
+Smiley advances slowly, and if found, points are earned, the winner is the one who collects the most points. 
+
+
+For more information about our game [click here](https://github.com/NoeBaru/PCTO-2024/wiki#pcto-2024---game-ability) to visit the site or [click here](https://github.com/NoeBaru/PCTO-2024/wiki) to visit the Wiki
 
 trama gioco, tecnologia, manuale (riassunto), screen gioco
 
