@@ -51,12 +51,12 @@ let score = score_incresing;
 
 function preload(){
 
-    bg_img_game = loadImage("./Img/Background.png");
-    torch_img = loadImage("./Img/BackgroundOff.png")
-    torch_img_off = loadImage("./Img/lightOff.png")
+    bg_img_game = loadImage("./Img/Game/Background.png");
+    torch_img = loadImage("./Img/Game/Light.png")
+    torch_img_off = loadImage("./Img/Game/LightOff.png")
 
-    mn_img = loadImage("./Img/Monster.png");
-    mn_img_jmpsc = loadImage ("./img/Monsterjumpscare.png");
+    mn_img = loadImage("./Img/Game/Monster.png");
+    mn_img_jmpsc = loadImage ("./img/Game/Monsterjumpscare.png");
 
 
 }
