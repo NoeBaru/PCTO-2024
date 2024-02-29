@@ -45,9 +45,8 @@ For our projects, we employ eye tracking technology using [Tobii Eye Tracker 4c]
 ***
 ## INFORMATIONS AND CREDITS
 
-### For more information about our game [click here](https://github.com/NoeBaru/PCTO-2024/wiki#pcto-2024---game-ability) to visit the site or [click here](https://github.com/NoeBaru/PCTO-2024/wiki) to visit the Wiki
+For more information about our game [click here](https://github.com/NoeBaru/PCTO-2024/wiki#pcto-2024---game-ability) to visit the site or [click here](https://github.com/NoeBaru/PCTO-2024/wiki) to visit the Wiki
 
-
-### !!! If the sounds don't work, adjust the volume of the device
-### For more info about the technology that we have used visit [Tobii sites](https://gaming.tobii.com/) 
+!!! If the sounds don't work, adjust the volume of the device
+For more info about the technology that we have used visit [Tobii sites](https://gaming.tobii.com/) 
 
