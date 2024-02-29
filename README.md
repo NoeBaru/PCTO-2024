@@ -44,10 +44,17 @@ Follow the instructions below to be able to use the game with the eye tracker
   
   ![default_key_bindings](https://github.com/NoeBaru/PCTO-2024/assets/144808380/2173b580-a833-41e5-87ff-a70e6b089f3e)
 
-## INFORMATIONS AND CREDITS
+## INFORMATIONS
 
 For more information about our game [click here](https://github.com/NoeBaru/PCTO-2024/wiki#pcto-2024---game-ability) to visit the site or [click here](https://github.com/NoeBaru/PCTO-2024/wiki) to visit the Wiki
 
 !!! If the sounds don't work, adjust the volume of the device
 For more info about the technology that we have used visit [Tobii sites](https://gaming.tobii.com/) 
+
+## CREDITS
+
+photo: [Canva](https://www.canva.com/), [Pinterest](https://www.pinterest.it/), [Tobii sites](https://gaming.tobii.com/) and to edit photo also [PicsArt](https://picsart.com/it/) 
+pixel art: [pixilart](https://www.pixilart.com/), [ibisPaint X](https://ibispaint.com/?lang=it)
+font: [daFont](https://www.dafont.com/it/)
+sounds: [Youtube](https://www.youtube.com/) and to convert in mp3 [noTube](https://notube.re/it/youtube-app-v141)
 
