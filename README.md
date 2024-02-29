@@ -18,6 +18,8 @@ Smiley advances slowly, and if found, points are earned, the winner is the one w
 
 ## TECHNOLOGY
 
+![TobiiEyeTracker4cPNG](https://github.com/NoeBaru/PCTO-2024/assets/144808380/93cb8830-3292-4206-9036-5a14d2596fe0)
+
 For our projects, we employ eye tracking technology using [Tobii Eye Tracker 4c](https://help.tobii.com/hc/en-us/articles/213414285-Specifications-for-the-Tobii-Eye-Tracker-4C), which, through eye detection, enables a more accessible use of the device for individuals with disabilities or anyone seeking a more immersive experience, both in gaming and in daily life while using the device.
 
 ## GUIDE
