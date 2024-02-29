@@ -9,41 +9,50 @@ Description:
 
 It's a game where you have to stop a monster in a hall with your eyes.
 Indeed if you look at it it will stop and teleport in an other parti of the screen.
+when yu stop it, you will increse your points
 */
 
 /Monster/
 let monster;
 
+/*images*/
 let mn_img;
 let mn_img_jmpsc;
 
+/*moovement*/
 let mn_speed;
 let mn_x;
 let mn_y;
 
+/*gestisce l'hitbox di Smiley*/
+let ellipseX;
+let ellipseY;
+/*gestisce il mouse*/
+let d;
+/*gestisce il punteggio e la velocità di Smiley*/
+let score_increasing = 3;
+let score = score_increasing;
+
+/*life of the player*/
 let alive = true;
 
 /Background/
+/*images*/
 let bg_img_game;
 let bg_img_act;
 let light_img;
 let light_img_off;
 
+/light/
+/*gestisce l'ingrandimento della torcia*/
 let light_img_width_start;
 let light_img_height_start;
 let light_img_width_end;
 let light_img_height_end;
-let light_img_height_modifier;//it's if the light get smaller of the start one
+
+/*variabili di lavoro che servono per gestire meglio l'ingrandimento della torcia*/
+let light_img_height_modifier;
 let light_img_width_modifier;
-let light_img_speed;
-
-let ellipseX;
-let ellipseY;
-
-let d;
-
-let score_increasing = 3;
-let score = score_increasing;
 
 let cont;
 
@@ -54,7 +63,6 @@ let img_instr;
 let gameStarted = false;
 
 /Sounds/
-let sound_door;
 let sound_scream;
 let sound_menu;
 let sound_go;
@@ -132,31 +140,29 @@ function killMonster() {
 }
 
 function printScore() {
-    background(img_go);
-    textSize(55);
-    textAlign(CENTER, CENTER);
-  
-    // Imposta il nuovo tipo di carattere
-    textFont(customFont);
-  
-    // Controlla se il suono non è già in riproduzione prima di avviare la riproduzion
-  
-    fill(255);
-    // Modifica "Score: " + (score / score_increasing - 1) come desideri
-    text("Score: " + (score / score_increasing - 1), width / 2, ((height / 2) + windowHeight / 20));
-  
-    if (!sound_go.isPlaying() && !sound_points.isPlaying()) {
-      sound_go.loop();
-      sound_points.play();
+  background(img_go);
+  textSize(55);
+  textAlign(CENTER, CENTER);
+
+  textFont(customFont);
+
+  fill(255);
+
+  text("Score: " + (score / score_increasing - 1), width / 2, ((height / 2) + windowHeight / 20));
+
+  if (!sound_go.isPlaying() && !sound_points.isPlaying()) {
+    sound_go.loop();
+    sound_points.play();
   }
 }
 
+
 function stopMusicScream(){
-    sound_scream.pause()
+    sound_scream.stop()
 }
 
-function stopMusicCatch(){
-    sound_points.pause()
+function stopMusicMenu(){
+    sound_menu.stop()
 }
 
 function preload() {
@@ -207,21 +213,23 @@ function setup(){
 
     cont = 0;
 
-    sound_scream.setVolume(0.5);
-    sound_points.setVolume(1);
+    sound_scream.setVolume(1);
+    sound_points.setVolume(0.5);
 }
 
 function draw(){
     if(!gameStarted){
         menu.startMenu();
+        if (!sound_menu.isPlaying()) {
+          sound_menu.loop()
+        }
         if(menu.continueGame){
             gameStarted = true;
+            stopMusicMenu()
         }
     }else{
         background(bg_img_act);
         if (alive) {
-            //sound_game.loop();
-            //sound_game.play();
             monster.update();
             light();
             isLookingMonster();

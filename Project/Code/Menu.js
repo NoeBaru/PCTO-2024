@@ -1,81 +1,65 @@
+/*
+Project: 
+Peeky eyes
+
+Part:
+Menu class
+
+Authors: 
+Rinaldi Danilo, Larovere Vanessa, Baruffolo Noemi, Dutto Patrick.
+
+Description:
+questa parte del gioco si occupa di gestire il menu, quindi la parte iniziale del gioco.
+*/
+
 class Menu {
   constructor(img_menu, img_instr) {
+    /*images*/
     this.img_menu = img_menu;
     this.img_instr = img_instr;
 
+    /*quale azione sto per fare*/
     this.action = "";
+    /*in quale azione sono*/
     this.situation = "menu";
+    /*gestisce l'immagine di sfondo che sto usando*/
     this.current_image = this.img_menu;
+    /*dice se iniziare la partita e uscire dal menu*/
     this.continueGame = false;
   }
 
+  
   startMenu() {
-    //console.log("Entrato");
-    image(this.current_image, 0, 0, windowWidth, windowHeight); // Disegna l'immagine corrente
+    image(this.current_image, 0, 0, windowWidth, windowHeight);
     this.handleMainMenu();
   }
-  //START)
-  //800, 1116 (X)
-  //360, 526 (Y)
 
-  //INSTRUCTIONS)
-  //800, 1116 (x)
-  //666, 794 (y)
+  isHighClick() {
+    return mouseY >= 0 && mouseY <= ((windowHeight / 2) + windowHeight / 10);
+  }
 
-  //BACK)
-  //14, 284(x)
-  //6, 142(y)
+  isCentralClick() {
+    return mouseX >= windowWidth / 4 && mouseX <= windowWidth / 1.5;
+  }
+
+  isRightClick() {
+    return mouseX <= windowWidth / 2;
+  }
 
   handleMainMenu() {
-    if(this.situation == "menu"){
-      if (mouseIsPressed && mouseY >= 0 && mouseY <= windowHeight/2) {
+    if (this.situation == "menu") {
+      if (mouseIsPressed && this.isHighClick() && this.isCentralClick()) {
         this.action = "play";
         this.continueGame = true;
-      } else if (mouseIsPressed && mouseY >= windowHeight / 2 && mouseY <= windowHeight) {
+      } else if (mouseIsPressed && !this.isHighClick() && this.isCentralClick()) {
         this.action = "instructions";
         this.current_image = this.img_instr;
         this.situation = "instructions";
       }
-    } else if (mouseIsPressed && mouseY >= 0 && mouseY <= windowHeight / 2 && this.action === "instructions") {
-        //console.log("Back Entrato");
-        this.action = "back";
-        this.current_image = this.img_menu;
-    } 
+    } else if (mouseIsPressed && this.isHighClick() && !this.isCentralClick() && this.isRightClick()) {
+      this.action = "back";
+      this.current_image = this.img_menu;
+      this.situation = "menu";
+    }
   }
-
-    /*
-
-    if (mouseIsPressed && mouseX >= 0 && mouseX <= windowWidth &&
-      mouseY >= 0 && mouseY <= windowHeight/2 && (this.action === "menu" || this.action === "menu1")) {
-      console.log("Cliccato");
-      this.action = "play";
-      this.continueGame = true;
-
-      // BUTTON INSTRUCTIONS
-    } else if (mouseIsPressed && mouseX >= 0 && mouseX <= windowWidth &&
-      mouseY >= 0 && mouseY <= windowHeight) {
-      console.log("Instructions Entrato");
-      this.action = "instructions";
-      this.current_image = this.img_instr;
-      // BUTTON BACK (disponibile solo quando l'azione è impostata su "instructions")
-      if (mouseIsPressed && mouseX >= 0 && mouseX <= windowWidth &&
-        mouseY >= 0 && mouseY <= windowHeight / 2 && this.action == "instructions") {
-        console.log("Back Entrato");
-        this.action = "back";
-        this.current_image = this.img_menu;
-      }
-    }
-    */
-
-    /*
-    // BUTTON BACK (disponibile solo quando l'azione è impostata su "instructions")
-    if (this.action !== "play" &&
-      mouseIsPressed && mouseX >= 0 && mouseX <= windowWidth &&
-      mouseY >= 0 && mouseY <= windowHeight/2) {
-        console.log("Back Entrato");
-
-        this.action = "back";
-        this.current_image = this.img_menu;
-    }
-    */
 }

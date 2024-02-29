@@ -8,6 +8,7 @@ Rinaldi Danilo, Larovere Vanessa, Baruffolo Noemi, Dutto Patrick.
 Description:
 In this code we create the class Monster that we will use in our code.
 */
+
 class Monster {
     constructor(mn_speed, mn_img, mn_img_jmpsc){
         this.speed = mn_speed;
