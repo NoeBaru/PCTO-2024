@@ -3,24 +3,16 @@ class Menu {
     this.img_menu = img_menu;
     this.img_instr = img_instr;
 
-    this.action = "menu";
+    this.action = "";
+    this.situation = "menu";
     this.current_image = this.img_menu;
     this.continueGame = false;
   }
 
   startMenu() {
-    do{
-      //console.log("Entrato");
-      image(this.current_image, 0, 0, windowWidth, windowHeight); // Disegna l'immagine corrente
-      if (this.action == "back"){
-        this.action = "menu";
-      }
-      this.handleMainMenu();
-      if(this.continueGame){
-        return true;
-      }
-    }while(this.continueGame == false);
-    
+    //console.log("Entrato");
+    image(this.current_image, 0, 0, windowWidth, windowHeight); // Disegna l'immagine corrente
+    this.handleMainMenu();
   }
   //START)
   //800, 1116 (X)
@@ -35,23 +27,20 @@ class Menu {
   //6, 142(y)
 
   handleMainMenu() {
-    if (mouseIsPressed && mouseY >= 0 && mouseY <= windowHeight/2 && this.action === "menu") {
-      console.log("Cliccato");
-      this.action = "play";
-      this.continueGame = true;
-    } else if (mouseIsPressed && mouseY >= windowHeight / 2 && mouseY <= windowHeight) {
-      console.log("Instructions Entrato");
-      this.action = "instructions";
-      this.current_image = this.img_instr;
-    }
-    
-    // Fuori dal blocco condizionale
-    if (mouseIsPressed && mouseY >= 0 && mouseY <= windowHeight / 2 && this.action === "instructions") {
-      console.log("Back Entrato");
-      this.action = "back";
-      this.current_image = this.img_menu;
-    }
-
+    if(this.situation == "menu"){
+      if (mouseIsPressed && mouseY >= 0 && mouseY <= windowHeight/2) {
+        this.action = "play";
+        this.continueGame = true;
+      } else if (mouseIsPressed && mouseY >= windowHeight / 2 && mouseY <= windowHeight) {
+        this.action = "instructions";
+        this.current_image = this.img_instr;
+        this.situation = "instructions";
+      }
+    } else if (mouseIsPressed && mouseY >= 0 && mouseY <= windowHeight / 2 && this.action === "instructions") {
+        //console.log("Back Entrato");
+        this.action = "back";
+        this.current_image = this.img_menu;
+    } 
   }
 
     /*
