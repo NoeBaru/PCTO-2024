@@ -1,6 +1,6 @@
 # PCTO - GAME ABILITY
 
-![Peeky Eyes](https://github.com/NoeBaru/PCTO-2024/blob/8feb6a443d4f89aa4c8a7cd814e94b7e978d8dba/Project/Img/menuStart.png)
+![menuStartNew](https://github.com/NoeBaru/PCTO-2024/assets/144808380/97eafd77-30b7-48ef-9cab-acbca4eca986)
 
 # GAME
 Peeky Eyes, is designed for individuals with ALS and total or partial paralysis, who can play using eye tracker technology.
