@@ -46,7 +46,7 @@ Follow the instructions below to be able to use the game with the eye tracker
 
 ## INFORMATIONS
 
-For more information about our game [click here](https://github.com/NoeBaru/PCTO-2024/wiki#pcto-2024---game-ability) to visit the site or [click here](https://github.com/NoeBaru/PCTO-2024/wiki) to visit the Wiki
+For more information about our game [click here](https://sites.google.com/itiscuneo.eu/bytestudio/home?authuser=3) to visit the site or [click here](https://github.com/NoeBaru/PCTO-2024/wiki) to visit the Wiki
 
 !!! If the sounds don't work, adjust the volume of the device
 
