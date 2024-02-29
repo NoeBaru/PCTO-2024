@@ -54,8 +54,8 @@ For more info about the technology that we have used visit [Tobii sites](https:/
 
 ## CREDITS
 
-photo: [Canva](https://www.canva.com/), [Pinterest](https://www.pinterest.it/), [Tobii sites](https://gaming.tobii.com/) and to edit photo also [PicsArt](https://picsart.com/it/) 
-pixel art: [pixilart](https://www.pixilart.com/), [ibisPaint X](https://ibispaint.com/?lang=it)
-font: [daFont](https://www.dafont.com/it/)
-sounds: [Youtube](https://www.youtube.com/) and to convert in mp3 [noTube](https://notube.re/it/youtube-app-v141)
+* photo: [Canva](https://www.canva.com/), [Pinterest](https://www.pinterest.it/), [Tobii sites](https://gaming.tobii.com/) and to edit photo also [PicsArt](https://picsart.com/it/) 
+* pixel art: [pixilart](https://www.pixilart.com/), [ibisPaint X](https://ibispaint.com/?lang=it)
+* font: [daFont](https://www.dafont.com/it/)
+* sounds: [Youtube](https://www.youtube.com/) and to convert in mp3 [noTube](https://notube.re/it/youtube-app-v141)
 
