@@ -6,9 +6,9 @@ We are ByteStudio, a team that has developed video games for individuals with di
 For our projects, we employ eye tracking technology, which, through eye detection, enables a more accessible use of the device for individuals with disabilities or anyone seeking a more immersive experience.
 It generates benefits both in gaming and in daily life while using the device.
 
-![menuStartNew](https://github.com/NoeBaru/PCTO-2024/assets/144808380/97eafd77-30b7-48ef-9cab-acbca4eca986)
-
 # GAME
+
+![menuStartNew](https://github.com/NoeBaru/PCTO-2024/assets/144808380/97eafd77-30b7-48ef-9cab-acbca4eca986)
 
 Peeky Eyes, is designed for individuals with ALS and total or partial paralysis, who can play using eye tracker technology.
 
