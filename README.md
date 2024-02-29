@@ -1,8 +1,15 @@
 # PCTO - GAME ABILITY
 
+# ByteStudio
+
+We are ByteStudio, a team that has developed video games for individuals with disabilities, who can still play through the use of eye tracker technology.
+For our projects, we employ eye tracking technology, which, through eye detection, enables a more accessible use of the device for individuals with disabilities or anyone seeking a more immersive experience.
+It generates benefits both in gaming and in daily life while using the device.
+
 ![menuStartNew](https://github.com/NoeBaru/PCTO-2024/assets/144808380/97eafd77-30b7-48ef-9cab-acbca4eca986)
 
 # GAME
+
 Peeky Eyes, is designed for individuals with ALS and total or partial paralysis, who can play using eye tracker technology.
 
 The goal is to search for the monster, Smiley, in a dark room before it approaches and ends the game.
@@ -10,6 +17,7 @@ The goal is to search for the monster, Smiley, in a dark room before it approach
 Smiley advances slowly, and if found, points are earned, the winner is the one who collects the most points.
 
 ## TECHNOLOGY
+
 For our projects, we employ eye tracking technology using [Tobii Eye Tracker 4c](https://help.tobii.com/hc/en-us/articles/213414285-Specifications-for-the-Tobii-Eye-Tracker-4C), which, through eye detection, enables a more accessible use of the device for individuals with disabilities or anyone seeking a more immersive experience, both in gaming and in daily life while using the device.
 
 ## GUIDE
