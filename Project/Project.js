@@ -8,23 +8,22 @@ Rinaldi Danilo, Larovere Vanessa, Baruffolo Noemi, Dutto Patrick.
 Description:
 
 It's a game where you have to stop a monster in a hall with your eyes.
-Indeed if you look at it it will stop and teleport in an other parti of the screen.
+Indeed if you look at it, it will stop and teleport to another part of the screen.
 */
 
-/*Monster*/
+// Monster
 let monster;
 
 let mn_img;
+let mn_img_jmpsc;
 
 let mn_speed;
 let mn_x;
 let mn_y;
 
-let mn_modifier;
-
 let alive = true;
 
-/*Background*/
+// Background
 let bg_img_game;
 let bg_img_act;
 let light_img;
@@ -34,7 +33,7 @@ let light_img_width_start;
 let light_img_height_start;
 let light_img_width_end;
 let light_img_height_end;
-let light_img_height_modifier;//it's if the light get smaller of the start one
+let light_img_height_modifier; // it's if the light gets smaller of the start one
 let light_img_width_modifier;
 let light_img_speed;
 
@@ -43,147 +42,159 @@ let ellipseY;
 
 let d;
 
+let continueGame = false;
 
-let score_incresing = 3;
-let score = score_incresing;
+let score_increasing = 3;
+let score = score_increasing;
 
+let cont;
 
-/*Menu*/
-
+// Menu
 let menu;
 
-let video_start;
-let video_end;
 let img_menu;
 let img_instr;
-let img_sett;
+let img_go;
 
-function light(){
+let customFont;
 
-    push();
+// Sounds
+let sound_door;
+let sound_scream;
+let sound_menu;
+let sound_go;
+let sound_points;
 
-    if(monster.saw){
+function light() {
+  push();
 
-        light_img_width_modifier = light_img_width_end + (monster.img.width * 8);
-        light_img_height_modifier = light_img_height_end + (monster.img.height * 8);
+  if (monster.saw) {
+    light_img_width_modifier = light_img_width_end + monster.img.width * 8;
+    light_img_height_modifier = light_img_height_end + monster.img.height * 8;
+  } else {
+    light_img_width_modifier = light_img_width_start;
+    light_img_height_modifier = light_img_height_start;
+  }
 
+  imageMode(CENTER);
+  image(light_img, mouseX, mouseY, light_img_width_modifier, light_img_height_modifier);
 
-    }else{
-
-        light_img_width_modifier = light_img_width_start;
-        light_img_height_modifier = light_img_height_start;
-
-    }
-
-    imageMode(CENTER); 
-    image(light_img, mouseX, mouseY, light_img_width_modifier, light_img_height_modifier);
-    
-    pop();
-
+  pop();
 }
 
-function isLookingMonster(){
-    ellipseMode(CENTER);
-    fill(255, 0);
-    noStroke();
-    
-    ellipseX = monster.x + monster.img.width / 2;
-    ellipseY = monster.y + monster.img.height / 2;
+function isLookingMonster() {
+  ellipseMode(CENTER);
+  fill(255, 0);
+  noStroke();
 
-    ellipse(ellipseX, ellipseY, monster.img.width, monster.img.height);
+  ellipseX = monster.x + monster.img.width / 2;
+  ellipseY = monster.y + monster.img.height / 2;
 
-    d = dist(mouseX, mouseY, ellipseX, ellipseY);
+  ellipse(ellipseX, ellipseY, monster.img.width, monster.img.height);
 
-    if (d < monster.img.width / 2){
-        monster.saw = true;
-    }else{
-        monster.saw = false;
-    }
+  d = dist(mouseX, mouseY, ellipseX, ellipseY);
 
+  if (d < monster.img.width / 2) {
+    monster.saw = true;
+  } else {
+    monster.saw = false;
+  }
 }
 
-function isKillingMonster(){
-
-    if (monster.saw){
-
-        monster.lp += 1;
-       
-    }
+function isKillingMonster() {
+  if (monster.saw) {
+    monster.lp += 1;
+  }
 }
 
 function isInScreen(x, y) {
-    return x > - monster.img.width && x < width &&
-        y > - monster.img.height && y < height;
+  return (
+    x > -monster.img.width &&
+    x < width &&
+    y > -monster.img.height &&
+    y < height
+  );
 }
 
-function wait(time){
-    
-    start = millis();
-    do
-    {
-        current = millis();
-    }
-    while(current < start + time)
-
+function wait(time) {
+  let start = millis();
+  let current;
+  do {
+    current = millis();
+  } while (current < start + time);
 }
 
-function killMonster(){
+function killMonster() {
 
-    monster.x = -monster.width;
-    monster.y = -monster.height;
+  sound_points.play();
+  monster.x = -monster.width;
+  monster.y = -monster.height;
 
-    score += score_incresing;
+  score += score_increasing;
 
-    
+  
 
-    setup();
-    draw();
-
-
+  setup();
+  draw();
 }
 
-function printScore(){
-    textSize(32);
-    textAlign(CENTER, CENTER);
-    fill(0);
-    text("Score: " + ((score / score_incresing) - 1), width / 2, height / 2);
+function printScore() {
+  background(img_go);
+  textSize(55);
+  textAlign(CENTER, CENTER);
+
+  // Imposta il nuovo tipo di carattere
+  textFont(customFont);
+
+  // Controlla se il suono non è già in riproduzione prima di avviare la riproduzion
+
+  fill(255);
+  // Modifica "Score: " + (score / score_increasing - 1) come desideri
+  text("Score: " + (score / score_increasing - 1), width / 2, ((height / 2) + windowHeight / 20));
+
+  if (!sound_go.isPlaying() && !sound_points.isPlaying()) {
+    sound_go.loop();
+    sound_points.play();
+}
 }
 
-function videoLoaded(video){
-    video.size(windowWidth, windowHeight);
+function stopMusicScream(){
+    sound_scream.pause()
 }
 
-function preload(){
-
-    bg_img_game = loadImage("./Img/Game/Background.png");
-    light_img = loadImage("./Img/Game/Light.png")
-    light_img_off = loadImage("./Img/Game/LightOff.png")
-
-    mn_img = loadImage("./Img/Game/Monster.png");
-    mn_img_jmpsc = loadImage ("./img/Game/Monsterjumpscare.png");
-
-    video_start = createVideo("./Video/Game/VideoMenuIntro.mp4");
-    video_end = createVideo("./Video/Game/VideoMenuOutro.mp4");
-    img_menu = loadImage("./Img/Game/MenuStart.png");
-    img_instr = loadImage("./Img/Game/Instructions.png");
-    img_sett = loadImage("./Img/Game/Background.png");
-
-
+function stopMusicCatch(){
+    sound_points.pause()
 }
 
-function setup(){
+function preload() {
+  bg_img_game = loadImage("./Img/Game/Background.png");
+  light_img = loadImage("./Img/Game/Light.png");
+  light_img_off = loadImage("./Img/Game/LightOff.png");
 
+  mn_img = loadImage("./Img/Game/Monster.png");
+  mn_img_jmpsc = loadImage("./Img/Game/Monsterjumpscare.png");
+
+  img_menu = loadImage("./Img/Game/MenuStart.png");
+  img_instr = loadImage("./Img/Game/Instructions.png");
+  img_go = loadImage("./Img/Game/gameOver.png")
+
+  sound_scream = loadSound("./Sound/Game/Scream.mp3");
+  sound_menu = loadSound("./Sound/Game/SoundMenu.mp3");
+  sound_go = loadSound("./Sound/Game/SoundGo.mp3");
+  sound_points = loadSound("./Sound/Game/SoundCatch.mp3");
+
+  customFont = loadFont('Font/SavageArcade.ttf')
+}
+
+function setup() {
+    frameRate(100);
     createCanvas(windowWidth, windowHeight);
-    frameRate(60);
 
-    videoLoaded(video_start);
-    videoLoaded(video_end);
+    menu = new Menu(img_menu, img_instr);
 
-    menu = new Menu(video_start, video_end, img_menu, img_instr, img_sett); 
+    mn_speed = score; // possibility to speed up the game basing on the level of the user/
 
-    mn_speed = score; /*possibility to speed up the game basing on the level of the user*/
-
-    mn_img.resize(windowWidth / 40, windowWidth / 40);   
+    mn_img.resize(windowWidth / 40, windowWidth / 40);
 
     monster = new Monster(mn_speed, mn_img, mn_img_jmpsc);
 
@@ -191,41 +202,54 @@ function setup(){
 
     light_img_width_start = 2 * windowWidth;
     light_img_height_start = 2 * windowHeight;
-    
-    light_img_width_end = 3 * windowWidth;
-    light_img_height_end = 3 * windowHeight; 
-    
-    light_img.resize(light_img_width_start,  light_img_height_start)
-    
-    //video_start.play();
-    //menu.start(video_start);
 
+    light_img_width_end = 3 * windowWidth;
+    light_img_height_end = 3 * windowHeight;
+
+    light_img.resize(light_img_width_start, light_img_height_start);
+
+    cont = 0;
+
+    sound_scream.setVolume(0.5);
+    sound_points.setVolume(1);
+
+    continueGame = menu.startMenu();
 }
 
-function draw(){
-
-    //do{
-        menu.startMenu(menu.video_start);
-    //}while(menu.isFinished());
-
-
+function draw() {
+  if (continueGame){
     background(bg_img_act);
-    if (alive == true){
-        monster.update(); 
-        light();
-        isLookingMonster();
-        isKillingMonster();
-        if (!isInScreen(monster.x, monster.y) && alive == true && !monster.kill){        
-            alive = false;
-        } 
-    }else{
-        background(light_img_off)
-        wait(random(500, 1500))
-        monster.img_jmpsc.width = windowWidth;
-        monster.img_jmpsc.height = 2 * windowHeight;
-        image(monster.img_jmpsc, 0, -windowHeight / 4);
-        wait(random(500, 1000));
+    if (alive) {
+      //sound_game.loop();
+      //sound_game.play();
+      monster.update();
+      light();
+      isLookingMonster();
+      isKillingMonster();
+      if (!isInScreen(monster.x, monster.y) && alive && !monster.kill) {
+        alive = false;
+        //sound_game.pause();
+      }
+    } else {
+      
+      wait(random(500, 1500));
+      monster.img_jmpsc.width = windowWidth;
+      monster.img_jmpsc.height = 2 * windowHeight;
+      
+      image(monster.img_jmpsc, 0, -windowHeight / 4);  
+      if (cont == 0){
+          sound_scream.play();
+          sound_scream.onended(stopMusicScream);
+          cont++
+          
+      }else{
+        wait(1000)
         printScore();
+  
+      }
+      
+      
     }
-
+  }
+  
 }
