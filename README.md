@@ -14,10 +14,29 @@ For our projects, we employ eye tracking technology using [Tobii Eye Tracker 4c]
 
 ## GUIDE
 
+* [click here](https://gaming.tobii.com/getstarted/) to install the Tobii Eye Tracker software (Please note: that Tobii Core Software is not compatible with Windows 11)
+  
+  ![softwareInstallation](https://github.com/NoeBaru/PCTO-2024/assets/144808380/48bd11db-1b45-4b04-aa73-8b4e3f0cc581)
+  
+* Then follow the setup installation instructions
+* Go to the Windows settings --> accessibility--> eye control --> ability the eye control
+* [Click here](https://youtu.be/aKi3Qr7T764?si=bEkEcXuW2SOXrHJT) to follow the tutorial to install a Windows application that replaces the computer mouse with a combination of Tobii Eye Tracker 4C and hotkeys.
+* The keys below work only when Win button is pressed:
+  > - "W/A/S/D" - adjust cursor position.
+  > - "J" - Left button
+  > - "K" - Right button
+  > - "H" - Scroll up
+  > - "N" - Scroll down
+  > - "<" - Scroll left
+  > - ">" - scroll right
+  
+  ![default_key_bindings](https://github.com/NoeBaru/PCTO-2024/assets/144808380/2173b580-a833-41e5-87ff-a70e6b089f3e)
 
+***
 
 For more information about our game [click here](https://github.com/NoeBaru/PCTO-2024/wiki#pcto-2024---game-ability) to visit the site or [click here](https://github.com/NoeBaru/PCTO-2024/wiki) to visit the Wiki
 
-trama gioco, tecnologia, manuale (riassunto), screen gioco
 
-(+ vedi sito Tobii, Wiki e sito con relatii link)
+### if the sounds don't work, adjust the volume of the device
+### visit [Tobii sites](https://gaming.tobii.com/) for more info about the technology that we have used
+
