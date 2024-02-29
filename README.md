@@ -24,6 +24,8 @@ For our projects, we employ eye tracking technology using [Tobii Eye Tracker 4c]
 
 ## GUIDE
 
+Follow the instructions below to be able to use the game with the eye tracker
+
 * [click here](https://gaming.tobii.com/getstarted/) to install the Tobii Eye Tracker software (Please note: that Tobii Core Software is not compatible with Windows 11)
   
   ![softwareInstallation](https://github.com/NoeBaru/PCTO-2024/assets/144808380/48bd11db-1b45-4b04-aa73-8b4e3f0cc581)
