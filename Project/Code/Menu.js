@@ -9,57 +9,69 @@ Authors:
 Rinaldi Danilo, Larovere Vanessa, Baruffolo Noemi, Dutto Patrick.
 
 Description:
-questa parte del gioco si occupa di gestire il menu, quindi la parte iniziale del gioco.
+This part of the game manages the menu, the initial section of the game.
 */
 
 class Menu {
   constructor(img_menu, img_instr) {
-    /*images*/
-    this.img_menu = img_menu;
-    this.img_instr = img_instr;
+      // Images
+      this.img_menu = img_menu;
+      this.img_instr = img_instr;
 
-    /*quale azione sto per fare*/
-    this.action = "";
-    /*in quale azione sono*/
-    this.situation = "menu";
-    /*gestisce l'immagine di sfondo che sto usando*/
-    this.current_image = this.img_menu;
-    /*dice se iniziare la partita e uscire dal menu*/
-    this.continueGame = false;
-  }
+      // Current action
+      this.action = "";
 
-  
-  startMenu() {
-    image(this.current_image, 0, 0, windowWidth, windowHeight);
-    this.handleMainMenu();
-  }
-
-  isHighClick() {
-    return mouseY >= 0 && mouseY <= ((windowHeight / 2) + windowHeight / 10);
-  }
-
-  isCentralClick() {
-    return mouseX >= windowWidth / 4 && mouseX <= windowWidth / 1.5;
-  }
-
-  isRightClick() {
-    return mouseX <= windowWidth / 2;
-  }
-
-  handleMainMenu() {
-    if (this.situation == "menu") {
-      if (mouseIsPressed && this.isHighClick() && this.isCentralClick()) {
-        this.action = "play";
-        this.continueGame = true;
-      } else if (mouseIsPressed && !this.isHighClick() && this.isCentralClick()) {
-        this.action = "instructions";
-        this.current_image = this.img_instr;
-        this.situation = "instructions";
-      }
-    } else if (mouseIsPressed && this.isHighClick() && !this.isCentralClick() && this.isRightClick()) {
-      this.action = "back";
-      this.current_image = this.img_menu;
+      // Current situation (menu or instructions)
       this.situation = "menu";
-    }
+
+      // Current background image
+      this.current_image = this.img_menu;
+
+      // Flag to indicate whether to start the game and exit the menu
+      this.continueGame = false;
+  }
+
+  // Displays the menu or instructions screen
+  startMenu() {
+      image(this.current_image, 0, 0, windowWidth, windowHeight);
+      this.handleMainMenu();
+  }
+
+  // Checks if the mouse click is in the top half of the screen
+  isHighClick() {
+      return mouseY >= 0 && mouseY <= ((windowHeight / 2) + windowHeight / 10);
+  }
+
+  // Checks if the mouse click is within the central region of the screen
+  isCentralClick() {
+      return mouseX >= windowWidth / 4 && mouseX <= windowWidth / 1.5;
+  }
+
+  // Checks if the mouse click is in the left half of the screen
+  isRightClick() {
+      return mouseX <= windowWidth / 2;
+  }
+
+  // Handles actions in the main menu or instructions screen
+  handleMainMenu() {
+      if (this.situation == "menu") {
+          // Checks for a click in the play button area
+          if (mouseIsPressed && this.isHighClick() && this.isCentralClick()) {
+              this.action = "play";
+              this.continueGame = true;
+          }
+          // Checks for a click in the instructions button area
+          else if (mouseIsPressed && !this.isHighClick() && this.isCentralClick()) {
+              this.action = "instructions";
+              this.current_image = this.img_instr;
+              this.situation = "instructions";
+          }
+      }
+      // Checks for a click in the back button area in the instructions screen
+      else if (mouseIsPressed && this.isHighClick() && !this.isCentralClick() && this.isRightClick()) {
+          this.action = "back";
+          this.current_image = this.img_menu;
+          this.situation = "menu";
+      }
   }
 }
