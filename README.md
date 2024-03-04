@@ -44,6 +44,8 @@ Follow the instructions below to be able to use the game with the eye tracker
   
   ![default_key_bindings](https://github.com/NoeBaru/PCTO-2024/assets/144808380/2173b580-a833-41e5-87ff-a70e6b089f3e)
 
+## To run the game, download the project zip folder and use a web server to play
+
 ## INFORMATIONS
 
 For more information about our game [click here](https://sites.google.com/itiscuneo.eu/bytestudio/home?authuser=3) to visit the site or [click here](https://github.com/NoeBaru/PCTO-2024/wiki) to visit the Wiki
