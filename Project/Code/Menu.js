@@ -48,7 +48,7 @@ class Menu {
   }
 
   // Checks if the mouse click is in the left half of the screen
-  isRightClick() {
+  isLeftClick() {
       return mouseX <= windowWidth / 2;
   }
 
@@ -68,7 +68,7 @@ class Menu {
           }
       }
       // Checks for a click in the back button area in the instructions screen
-      else if (mouseIsPressed && this.isHighClick() && !this.isCentralClick() && this.isRightClick()) {
+      else if (mouseIsPressed && this.isHighClick() && !this.isCentralClick() && this.isLeftClick()) {
           this.action = "back";
           this.current_image = this.img_menu;
           this.situation = "menu";

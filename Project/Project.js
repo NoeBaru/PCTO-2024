@@ -178,6 +178,12 @@ function stopMusicMenu() {
 
 // Preloads images, sounds, and fonts
 function preload() {
+
+    sound_scream = loadSound("./Sound/Game/Scream.mp3");
+    sound_menu = loadSound("./Sound/Game/SoundMenu.mp3");
+    sound_go = loadSound("./Sound/Game/SoundGo.mp3");
+    sound_points = loadSound("./Sound/Game/SoundCatch.mp3");
+
     bg_img_game = loadImage("./Img/Game/Background.png");
     light_img = loadImage("./Img/Game/Light.png");
     light_img_off = loadImage("./Img/Game/LightOff.png");
@@ -188,11 +194,6 @@ function preload() {
     img_menu = loadImage("./Img/Game/MenuStart.png");
     img_instr = loadImage("./Img/Game/Instructions.png");
     img_go = loadImage("./Img/Game/gameOver.png");
-
-    sound_scream = loadSound("./Sound/Game/Scream.mp3");
-    sound_menu = loadSound("./Sound/Game/SoundMenu.mp3");
-    sound_go = loadSound("./Sound/Game/SoundGo.mp3");
-    sound_points = loadSound("./Sound/Game/SoundCatch.mp3");
 
     customFont = loadFont('Font/SavageArcade.ttf');
 }

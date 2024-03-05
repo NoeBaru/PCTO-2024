@@ -1,5 +1,8 @@
 /*
 Project: 
+Peeky eyes
+
+Part:
 Monster.js
 
 Authors: 
@@ -17,8 +20,8 @@ class Monster {
         this.x = random(width / 2 - this.img.width, width / 2 + this.img.width);
         this.y = random(height / 2 - this.img.height, height / 2 + this.img.height);
         //the side where it goes
-        this.side_x = random([-1, 1]);
-        this.side_y = random([-1, 1]);
+        this.side_x = random([-3, 1]);
+        this.side_y = random([-3, 1]);
         this.progress = 0;
         this.saw = false;
         this.kill = false;
